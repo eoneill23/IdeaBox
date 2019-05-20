@@ -7,44 +7,50 @@
 <body>
   <nav>
     <h1>IdeaBox Redux</h1>
-    <section>
+    <section class="nav-sections">
       <h2>Filter Starred Ideas</h2>
-      <button>Show Starred Ideas</button> 
+      <button class="nav-btns" id="show-starred-btn">Show Starred Ideas</button> 
     </section>
-    <section>
+    <section class="nav-sections">
       <h2>Filter by Quality</h2>
       <ul>
-        <li>Swill</li>
-        <li>Plausible</li>
-        <li>Genius</li>
+        <li id="swill-quality">Swill</li>
+        <li id="plausible-quality">Plausible</li>
+        <li id="genius-quality">Genius</li>
       </ul>
       <label>New Quality</label>
-      <input type="text" name=""/>
-      <button>Add New Quality</button>
+      <input type="text" name="" id="new-quality-input">
+      <button class="nav-btns" id="add-new-quality-btn">Add New Quality</button>
     </section>
   </nav>
-  <section>
+  <section id="idea-submission">
     <form>
       <label>Title</label>
-      <input type="text" name=""/>
+      <input type="text" name="" id="idea-title-input">
       <label>Body</label>
-      <input type="text" name=""/>
-      <button>Save</button>
-      <img src="images/">
-      <input type="text" name="" placeholder="Search ideas"/>
+      <input type="text" name="" id="idea-body-input">
+      <button id="save-button">Save</button>
+      <img src="images/" alt="Search button" id="search-btn">
+      <input type="text" name="" placeholder="Search ideas" id="search-input">
     </form>
   </section>
   <main>
+    <p id="user-prompt-text">Prompt to user goes here</p>
     <article>
-      <header><img src=""><img src=""></header>
+      <header>
+        <img src="images/star.svg" alt="Star rating" id="white-star-img">
+        <img src="images/delete.svg" alt="Delete x" id="white-x-img">
+      </header>
       <main>
-        <h3>Idea title</h3>
-        <p>Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
+        <h3 id="idea-title-output">Idea title</h3>
+        <p id="idea-body-output">
+          Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.
+        </p>
       </main>
       <footer>
-        <img src="">
+        <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
         <p>Quality: Swill</p>
-        <img src="">
+        <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
       </footer>
     </article>
   </main>
