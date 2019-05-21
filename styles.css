@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  border: 1px solid red;
+/*  border: 1px solid red;*/
 }
 
 html {
@@ -22,7 +22,7 @@ body {
 }
 
 img {
-  height: 5px;
+  height: 30px;
 }
 
 
@@ -69,22 +69,44 @@ form {
 
 /*------------------------Main-----------------------*/
 
-main {
+#main {
   grid-area: main;
   background-color: #EAEAF4;
   display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 50%);
+  padding: 20px;
+}
+
+article {
+  border: 1px solid #6E646B;
 }
 
 #card-body {
   background-color: #FFFFFF;
   color: #1F1F3D;
+  height: 74%;
+  padding: 20px 15px 20px 15px;
 }
 
 header {
   background-color: #1F1F3D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 13%;
+}
+
+#idea-title-output {
+  margin-top: 0;
 }
 
 footer {
   background-color: #5356A4;
   color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 13%;
 }
