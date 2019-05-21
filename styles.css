@@ -191,6 +191,14 @@ article {
   border: 1px solid #6E646B;
 }
 
+#user-prompt-text {
+  border: 2px dotted #aaaaaa;
+  color: #aaaaaa;
+  padding: 40px;
+  margin: 0;
+  text-align: center;
+}
+
 #card-body {
   background-color: #FFFFFF;
   color: #1F1F3D;
