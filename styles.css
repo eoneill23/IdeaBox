@@ -35,14 +35,62 @@ nav {
   color: #FFFFFF;
 }
 
-ul {
-  list-style-type: none;
+section { 
+  border-bottom: 2px solid #5356A4;
+
+}
+
+h1 {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #5356A4;
 }
 
 .nav-btns {
+  width: 90%;
+  margin-left: 20px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  border-radius: 3px;
   background-color: #5356A4;
   color: #E9E9F3;
   border-color: #353567;
+  height: 40px;
+
+}
+
+h2 {
+  padding-left: 20px;
+  font-weight: 400;
+  font-size: .8em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+li {
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
+
+#new-quality-label {
+  font-size: .8em;
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+
+#new-quality-input {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  width: 90%;
+  height: 40px;
+  border: 1px solid #353567;
 }
 
 
