@@ -35,14 +35,62 @@ nav {
   color: #FFFFFF;
 }
 
-ul {
-  list-style-type: none;
+section { 
+  border-bottom: 2px solid #5356A4;
+
+}
+
+h1 {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #5356A4;
 }
 
 .nav-btns {
+  width: 90%;
+  margin-left: 20px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  border-radius: 3px;
   background-color: #5356A4;
   color: #E9E9F3;
   border-color: #353567;
+  height: 40px;
+
+}
+
+h2 {
+  padding-left: 20px;
+  font-weight: 400;
+  font-size: .8em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+li {
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
+
+#new-quality-label {
+  font-size: .8em;
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+
+#new-quality-input {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  width: 90%;
+  height: 40px;
+  border: 1px solid #353567;
 }
 
 
@@ -54,6 +102,14 @@ ul {
   display: flex;
 }
 
+.idea-form-label{
+  font-size: .8em;
+  display: block;
+  margin-bottom: 5px;
+  color: #353567;
+  font-weight: 700;
+}
+
 form {
   height: 90%;
   width: 40%;
@@ -62,10 +118,62 @@ form {
   margin: auto;
 }
 
+#idea-title-input {
+  border: 1px solid #5356A4;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+#idea-body-input {
+  border: 1px solid #5356A4;
+  height: 80px;
+  margin-bottom: 20px
+}
+
 #save-btn {
   background-color: #353567;
   color: #FFFFFF;
+  border: 1px solid #5356A4;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
+
+div {
+  display: flex;
+  text-align: center;
+  height: 40px;
+}
+
+#search-btn {
+  background-color: #353567;
+  width: 10%;
+  height: 40px;
+  padding: 10px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+#search-input {
+  width: 90%;
+  height: 40px;
+  border: 1px solid #5356A4;
+  padding: 5px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin: 0;
+  color: #5356A4;
+}
+
+::placeholder {
+  color: #5356A4;
+}
+
+.round-corners {
+  border-radius: 3px;
+}
+
 
 /*------------------------Main-----------------------*/
 
@@ -81,6 +189,14 @@ form {
 
 article {
   border: 1px solid #6E646B;
+}
+
+#user-prompt-text {
+  border: 2px dotted #aaaaaa;
+  color: #aaaaaa;
+  padding: 40px;
+  margin: 0;
+  text-align: center;
 }
 
 #card-body {
