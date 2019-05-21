@@ -4,13 +4,18 @@
   border: 1px solid red;
 }
 
+html {
+  height: 100%;
+}
+
 /*------------------------Body-----------------------*/
 
 body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: (4, 1fr);
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 40% 60%;
   grid-template-areas: 
     "nav section section section"
     "nav main main main"; 
@@ -30,19 +35,56 @@ nav {
   color: #FFFFFF;
 }
 
+ul {
+  list-style-type: none;
+}
+
+.nav-btns {
+  background-color: #5356A4;
+  color: #E9E9F3;
+  border-color: #353567;
+}
+
 
 /*-------------------Idea Form-----------------------*/
 
 #idea-submission {
   grid-area: section;
   background-color: #A9AAD2;
+  display: flex;
 }
 
+form {
+  height: 90%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 
+#save-btn {
+  background-color: #353567;
+  color: #FFFFFF;
+}
 
 /*------------------------Main-----------------------*/
 
 main {
   grid-area: main;
   background-color: #EAEAF4;
+  display: grid;
+}
+
+#card-body {
+  background-color: #FFFFFF;
+  color: #1F1F3D;
+}
+
+header {
+  background-color: #1F1F3D;
+}
+
+footer {
+  background-color: #5356A4;
+  color: #FFFFFF;
 }
