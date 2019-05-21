@@ -140,6 +140,10 @@ form {
   margin-bottom: 20px;
 }
 
+#save-btn:disabled {
+  background-color: lightgrey;
+}
+
 div {
   display: flex;
   text-align: center;
