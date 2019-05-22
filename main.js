@@ -46,9 +46,9 @@ function appendCard() {
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
-        <h3 id="idea-title-output">Idea title</h3>
+        <h3 id="idea-title-output">${titleInput.value}</h3>
         <p id="idea-body-output">
-          Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.
+          ${bodyInput.value}
         </p>
       </main>
       <footer>

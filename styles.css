@@ -203,6 +203,10 @@ article {
   text-align: center;
 }
 
+.hidden{
+  display: none;
+}
+
 #card-body {
   background-color: #FFFFFF;
   color: #1F1F3D;
