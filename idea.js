@@ -1,23 +1,17 @@
 class Idea {
-  constructor(object) {
-    this.id = object.id;
-    this.title = object.title;
-    this.body = object.body;
+  constructor(title, body) {
+    // this.id = object.id;
+    this.title = title;
+    this.body = body;
     this.star = false;
     this.quality = 0;
   }
   saveToStorage() {
-
   }
   deleteFromStorage() {
-
   }
   updateIdea() {
-
   }
   updateQuality(){
   }
 }
-
-
-module.exports = Idea;
