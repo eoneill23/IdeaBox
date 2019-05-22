@@ -35,6 +35,7 @@ function saveIdea() {
   var bodyInputValue = bodyInput.value;
   var newIdea = new Idea(titleInputValue, bodyInputValue);
   appendCard();
+  clearFields();
   console.log(newIdea)
 };
 
@@ -59,3 +60,7 @@ function appendCard() {
     </article>`)
 }
 
+function clearFields() {
+  titleInput.value = '';
+  bodyInput.value = '';
+}
