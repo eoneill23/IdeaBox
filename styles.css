@@ -14,6 +14,7 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
+  margin: 0;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 40% 60%;
   grid-template-areas: 
@@ -140,6 +141,10 @@ form {
   margin-bottom: 20px;
 }
 
+#save-btn:disabled {
+  background-color: lightgrey;
+}
+
 div {
   display: flex;
   text-align: center;
@@ -197,6 +202,10 @@ article {
   padding: 40px;
   margin: 0;
   text-align: center;
+}
+
+.hidden{
+  display: none;
 }
 
 #card-body {
