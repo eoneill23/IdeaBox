@@ -33,7 +33,10 @@ function saveIdea() {
   event.preventDefault();
   var titleInputValue = titleInput.value;
   var bodyInputValue = bodyInput.value;
-  var newIdea = new Idea(titleInputValue, bodyInputValue);
+  var uniqueId = Date.now();
+  var newIdea = new Idea(titleInputValue, bodyInputValue, uniqueId);
+  var stringifiedIdea = stringifyIdea(newIdea);
+  newIdea.saveToStorage(stringifiedIdea);
   appendCard();
   clearFields();
   disableSaveBtn();
@@ -64,4 +67,11 @@ function appendCard() {
 function clearFields() {
   titleInput.value = '';
   bodyInput.value = '';
+}
+
+function stringifyIdea(idea){
+  var stringifiedIdea = JSON.stringify(idea);
+
+  console.log('hello');
+  return stringifiedIdea;
 }

@@ -1,12 +1,13 @@
 class Idea {
-  constructor(title, body) {
-    // this.id = object.id;
+  constructor(title, body, id) {
+    this.id = id;
     this.title = title;
     this.body = body;
     this.star = false;
     this.quality = 0;
   }
-  saveToStorage() {
+  saveToStorage(pram) {
+    localStorage.setItem('this.id', pram);
   }
   deleteFromStorage() {
   }
