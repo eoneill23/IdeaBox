@@ -36,6 +36,7 @@ function saveIdea() {
   var newIdea = new Idea(titleInputValue, bodyInputValue);
   appendCard();
   clearFields();
+  disableSaveBtn();
   console.log(newIdea)
 };
 
