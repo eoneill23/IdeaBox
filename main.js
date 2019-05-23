@@ -12,7 +12,7 @@ var mainContent = document.getElementById('main');
 
 var userPrompt = document.getElementById('user-prompt-text');
 
-var ideas = [];
+var ideas = JSON.parse(localStorage.getItem('ideaArray')) || [];
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
@@ -45,6 +45,10 @@ function createIdeaObj() {
   return obj
 } 
 
+function reinstantiateCard(parsedObjectArray) {
+  var someShit = parsedObjectArray.map(appendCard());
+  console.log('someShit ',someShit);
+}
 
 function saveIdea() {
   event.preventDefault();
@@ -79,19 +83,38 @@ function appendCard() {
     </article>`)
 }
 
+function persistCard(title, body) {
+  userPrompt.classList.add('hidden');
+  mainContent.insertAdjacentHTML('afterbegin', `<article>
+      <header>
+        <img src="images/star.svg" alt="Star rating" id="white-star-img">
+        <img src="images/delete.svg" alt="Delete x" id="white-x-img">
+      </header>
+      <main id="card-body">
+        <h3 id="idea-title-output">${title}</h3>
+        <p id="idea-body-output">
+          ${body}
+        </p>
+      </main>
+      <footer>
+        <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
+        <p>Quality: Swill</p>
+        <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
+      </footer>
+    </article>`)
+}
+
 function clearFields() {
   titleInput.value = '';
   bodyInput.value = '';
 }
 
-
-function recallIdeas(){
-  
-  var storedIdeas = localStorage.getItem('ideaArray');
-  console.log(storedIdeas);
-  var parsedIdeas = JSON.parse(storedIdeas);
-  console.log('note ', parsedIdeas);
-
+function recallIdeas() {
+  for (var i=0; i < ideas.length; i++) {
+    var reconstructedIdea = new Idea(ideas[i])
+    persistCard(reconstructedIdea.title, reconstructedIdea.body);
+  }
+  // var reconstructedIdeas = 
   
   // var persistedIdea = new Idea()
   // var returnCard = ideas.map(appendCard(persistedIdea));
