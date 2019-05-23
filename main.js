@@ -14,11 +14,18 @@ var userPrompt = document.getElementById('user-prompt-text');
 
 var ideas = JSON.parse(localStorage.getItem('ideaArray')) || [];
 
+var mainSection = document.getElementById('main');
+
+var card = document.querySelector('article');
+// card.dataset.id
+
 titleInput.addEventListener('keyup', enableSaveBtn);
 
 bodyInput.addEventListener('keyup', enableSaveBtn);
 
 saveBtn.addEventListener('click', saveIdea);
+
+mainSection.addEventListener('click', deleteCard)
 
 window.addEventListener('load', recallIdeas);
 
@@ -34,9 +41,9 @@ function disableSaveBtn() {
 }
 
 function createIdeaObj() {
+  var uniqueId = Date.now();
   var titleInputValue = titleInput.value;
   var bodyInputValue = bodyInput.value;
-  var uniqueId = Date.now();
   var obj = {
     id: uniqueId,
     title: titleInputValue,
@@ -45,34 +52,29 @@ function createIdeaObj() {
   return obj
 } 
 
-function reinstantiateCard(parsedObjectArray) {
-  var someShit = parsedObjectArray.map(appendCard());
-  console.log('someShit ',someShit);
-}
-
 function saveIdea() {
   event.preventDefault();
   var ideaObj = createIdeaObj();
   var newIdea = new Idea(ideaObj);
+  appendCard(newIdea);
   ideas.push(newIdea);
   var allIdeas = JSON.stringify(ideas);
   newIdea.saveToStorage(allIdeas);
-  appendCard();
   clearFields();
   disableSaveBtn();
 };
 
-function appendCard() {
+function appendCard(idea) {
   userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article>
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${idea.id}">
       <header>
         <img src="images/star.svg" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
-        <h3 id="idea-title-output">${titleInput.value}</h3>
+        <h3 id="idea-title-output">${idea.title}</h3>
         <p id="idea-body-output">
-          ${bodyInput.value}
+          ${idea.body}
         </p>
       </main>
       <footer>
@@ -85,7 +87,7 @@ function appendCard() {
 
 function persistCard(title, body) {
   userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article>
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="card">
       <header>
         <img src="images/star.svg" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
@@ -114,10 +116,11 @@ function recallIdeas() {
     var reconstructedIdea = new Idea(ideas[i])
     persistCard(reconstructedIdea.title, reconstructedIdea.body);
   }
-  // var reconstructedIdeas = 
-  
-  // var persistedIdea = new Idea()
-  // var returnCard = ideas.map(appendCard(persistedIdea));
-  // console.log(returnCard);
-  // console.log(ideas);
+}
+
+function deleteCard(event) {
+  console.log('ClickyClicky')
+  if (event.target.closest('#white-x-img')) {
+  event.target.closest('.card').remove();
+  } 
 }
