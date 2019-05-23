@@ -1,8 +1,27 @@
+// class Idea {
+//   constructor(id, title, body) {
+//     this.id = id;
+//     this.title = title;
+//     this.body = body;
+//     this.star = false;
+//     this.quality = 0;
+//   }
+//   saveToStorage(pram) {
+//     localStorage.setItem('ideaArray', pram);
+//   }
+//   deleteFromStorage() {
+//   }
+//   updateIdea() {
+//   }
+//   updateQuality(){
+//   }
+// }
+
 class Idea {
-  constructor(id, title, body) {
-    this.id = id;
-    this.title = title;
-    this.body = body;
+  constructor(obj) {
+    this.id = obj.id;
+    this.title = obj.title;
+    this.body = obj.body;
     this.star = false;
     this.quality = 0;
   }

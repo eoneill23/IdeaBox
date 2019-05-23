@@ -12,13 +12,13 @@ var mainContent = document.getElementById('main');
 
 var userPrompt = document.getElementById('user-prompt-text');
 
-
-
 var ideas = [];
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
 bodyInput.addEventListener('keyup', enableSaveBtn);
+
+saveBtn.addEventListener('click', saveIdea);
 
 window.addEventListener('load', recallIdeas);
 
@@ -33,21 +33,34 @@ function disableSaveBtn() {
   }
 }
 
-saveBtn.addEventListener('click', saveIdea);
-
-function saveIdea() {
-  event.preventDefault();
+function createIdeaObj() {
   var titleInputValue = titleInput.value;
   var bodyInputValue = bodyInput.value;
   var uniqueId = Date.now();
-  var newIdea = new Idea(uniqueId, titleInputValue, bodyInputValue);
+  var obj = {
+    id: uniqueId,
+    title: titleInputValue,
+    body: bodyInputValue
+  }
+  return obj
+} 
+
+
+function saveIdea() {
+  event.preventDefault();
+  // var titleInputValue = titleInput.value;
+  // var bodyInputValue = bodyInput.value;
+  // var uniqueId = Date.now();
+  // var newIdea = new Idea(uniqueId, titleInputValue, bodyInputValue);
+  var test = createIdeaObj();
+  var newIdea = new Idea(test);
   ideas.push(JSON.stringify(newIdea));
-  // console.log(ideas);
+  console.log(ideas);
   newIdea.saveToStorage(ideas);
   appendCard();
   clearFields();
   disableSaveBtn();
-  // console.log(newIdea)
+  console.log(newIdea)
 };
 
 function appendCard() {
@@ -78,7 +91,11 @@ function clearFields() {
 
 
 function recallIdeas(){
-  var parsedIdeas = JSON.parse(localStorage.getItem("ideaArray"));
+  
+  var storedIdeas = localStorage.getItem('ideaArray');
+  console.log(storedIdeas);
+  var parsedIdeas = JSON.parse(storedIdeas);
+  console.log(parsedIdeas);
   
   // var persistedIdea = new Idea()
   // var returnCard = ideas.map(appendCard(persistedIdea));
