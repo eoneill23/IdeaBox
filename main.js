@@ -10,11 +10,17 @@ var searchInput = document.getElementById('search-input');
 
 var mainContent = document.getElementById('main');
 
-var userPrompt = document.getElementById('user-prompt-text')
+var userPrompt = document.getElementById('user-prompt-text');
+
+
+
+var ideas = [];
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
-bodyInput.addEventListener('keyup', enableSaveBtn)
+bodyInput.addEventListener('keyup', enableSaveBtn);
+
+window.addEventListener('load', recallIdeas);
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -27,20 +33,21 @@ function disableSaveBtn() {
   }
 }
 
-saveBtn.addEventListener('click', saveIdea)
+saveBtn.addEventListener('click', saveIdea);
 
 function saveIdea() {
   event.preventDefault();
   var titleInputValue = titleInput.value;
   var bodyInputValue = bodyInput.value;
   var uniqueId = Date.now();
-  var newIdea = new Idea(titleInputValue, bodyInputValue, uniqueId);
-  var stringifiedIdea = stringifyIdea(newIdea);
-  newIdea.saveToStorage(stringifiedIdea);
+  var newIdea = new Idea(uniqueId, titleInputValue, bodyInputValue);
+  ideas.push(JSON.stringify(newIdea));
+  // console.log(ideas);
+  newIdea.saveToStorage(ideas);
   appendCard();
   clearFields();
   disableSaveBtn();
-  console.log(newIdea)
+  // console.log(newIdea)
 };
 
 function appendCard() {
@@ -69,9 +76,12 @@ function clearFields() {
   bodyInput.value = '';
 }
 
-function stringifyIdea(idea){
-  var stringifiedIdea = JSON.stringify(idea);
 
-  console.log('hello');
-  return stringifiedIdea;
+function recallIdeas(){
+  var parsedIdeas = JSON.parse(localStorage.getItem("ideaArray"));
+  
+  // var persistedIdea = new Idea()
+  // var returnCard = ideas.map(appendCard(persistedIdea));
+  // console.log(returnCard);
+  // console.log(ideas);
 }

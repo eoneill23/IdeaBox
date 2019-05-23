@@ -1,5 +1,5 @@
 class Idea {
-  constructor(title, body, id) {
+  constructor(id, title, body) {
     this.id = id;
     this.title = title;
     this.body = body;
@@ -7,7 +7,7 @@ class Idea {
     this.quality = 0;
   }
   saveToStorage(pram) {
-    localStorage.setItem('this.id', pram);
+    localStorage.setItem('ideaArray', pram);
   }
   deleteFromStorage() {
   }
