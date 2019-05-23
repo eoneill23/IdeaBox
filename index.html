@@ -19,43 +19,26 @@
         <li id="plausible-quality">Plausible</li>
         <li id="genius-quality">Genius</li>
       </ul>
-      <label id="new-quality-label">New Quality</label>
-      <input type="text" name="" id="new-quality-input">
+      <label id="new-quality-label" for="new-quality-input">New Quality</label>
+      <input type="text" id="new-quality-input">
       <button class="nav-btns" id="add-new-quality-btn">Add New Quality</button>
     </section>
   </nav>
   <section id="idea-submission">
     <form>
-      <label class="idea-form-label round-corners">Title</label>
+      <label class="idea-form-label round-corners" for="idea-title-input">Title</label>
       <input type="text" id="idea-title-input" class="round-corners">
-      <label class="idea-form-label round-corners">Body</label>
-      <input type="text" name="" id="idea-body-input" class="round-corners">
+      <label class="idea-form-label round-corners" for="idea-body-input">Body</label>
+      <textarea type="text" id="idea-body-input" class="round-corners" maxlength="120"></textarea>
       <button disabled id="save-btn" class="round-corners">Save</button>
       <div>
         <img src="images/search.svg" alt="Search button" id="search-btn">
-        <input type="text" name="" placeholder="Search ideas" id="search-input">
+        <input type="text" placeholder="Search ideas" id="search-input">
       </div>
     </form>
   </section>
   <main id="main">
     <p id="user-prompt-text">Enter an idea with a title in the form above and click "Save" to save your idea and make it appear here.</p>
-    <!-- <article>
-      <header>
-        <img src="images/star.svg" alt="Star rating" id="white-star-img">
-        <img src="images/delete.svg" alt="Delete x" id="white-x-img">
-      </header>
-      <main id="card-body">
-        <h3 id="idea-title-output">Idea title</h3>
-        <p id="idea-body-output">
-          Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.
-        </p>
-      </main>
-      <footer>
-        <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
-        <p>Quality: Swill</p>
-        <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
-      </footer>
-    </article> -->
   </main>
 </body>
   <script type="text/javascript" src="idea.js"></script>
