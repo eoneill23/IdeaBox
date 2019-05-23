@@ -6,8 +6,8 @@ class Idea {
     this.star = false;
     this.quality = 0;
   }
-  saveToStorage(pram) {
-    localStorage.setItem('ideaArray', pram);
+  saveToStorage(param) {
+    localStorage.setItem('ideaArray', param);
   }
   deleteFromStorage() {
   }
