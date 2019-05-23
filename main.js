@@ -48,19 +48,14 @@ function createIdeaObj() {
 
 function saveIdea() {
   event.preventDefault();
-  // var titleInputValue = titleInput.value;
-  // var bodyInputValue = bodyInput.value;
-  // var uniqueId = Date.now();
-  // var newIdea = new Idea(uniqueId, titleInputValue, bodyInputValue);
-  var test = createIdeaObj();
-  var newIdea = new Idea(test);
-  ideas.push(JSON.stringify(newIdea));
-  console.log(ideas);
-  newIdea.saveToStorage(ideas);
+  var ideaObj = createIdeaObj();
+  var newIdea = new Idea(ideaObj);
+  ideas.push(newIdea);
+  var allIdeas = JSON.stringify(ideas);
+  newIdea.saveToStorage(allIdeas);
   appendCard();
   clearFields();
   disableSaveBtn();
-  console.log(newIdea)
 };
 
 function appendCard() {
@@ -95,7 +90,8 @@ function recallIdeas(){
   var storedIdeas = localStorage.getItem('ideaArray');
   console.log(storedIdeas);
   var parsedIdeas = JSON.parse(storedIdeas);
-  console.log(parsedIdeas);
+  console.log('note ', parsedIdeas);
+
   
   // var persistedIdea = new Idea()
   // var returnCard = ideas.map(appendCard(persistedIdea));
