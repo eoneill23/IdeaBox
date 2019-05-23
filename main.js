@@ -16,7 +16,7 @@ var ideas = JSON.parse(localStorage.getItem('ideaArray')) || [];
 
 var mainSection = document.getElementById('main');
 
-// var card = document.querySelector('article');
+var card = document.querySelector('article');
 // card.dataset.id
 
 titleInput.addEventListener('keyup', enableSaveBtn);
@@ -25,7 +25,7 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 
 saveBtn.addEventListener('click', saveIdea);
 
-// mainSection.addEventListener('click')
+mainSection.addEventListener('click', deleteCard)
 
 window.addEventListener('load', recallIdeas);
 
@@ -66,7 +66,7 @@ function saveIdea() {
 
 function appendCard(idea) {
   userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article data-id="${idea.id}">
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${idea.id}">
       <header>
         <img src="images/star.svg" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
@@ -87,7 +87,7 @@ function appendCard(idea) {
 
 function persistCard(title, body) {
   userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article>
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="card">
       <header>
         <img src="images/star.svg" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
@@ -116,4 +116,11 @@ function recallIdeas() {
     var reconstructedIdea = new Idea(ideas[i])
     persistCard(reconstructedIdea.title, reconstructedIdea.body);
   }
+}
+
+function deleteCard(event) {
+  console.log('ClickyClicky')
+  if (event.target.closest('#white-x-img')) {
+  event.target.closest('.card').remove();
+  } 
 }
