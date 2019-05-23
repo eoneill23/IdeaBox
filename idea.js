@@ -6,10 +6,15 @@ class Idea {
     this.star = false;
     this.quality = 0;
   }
-  saveToStorage(param) {
-    localStorage.setItem('ideaArray', param);
+  saveToStorage(ideas) {
+    localStorage.setItem('ideasArray', ideas);
   }
-  deleteFromStorage() {
+  deleteFromStorage(oldIdeas) {
+  // get stuff from storgage
+  // reset new ideas into that array
+  // save that array to storage
+
+
   }
   updateIdea() {
   }

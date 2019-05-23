@@ -12,9 +12,7 @@ var mainContent = document.getElementById('main');
 
 var userPrompt = document.getElementById('user-prompt-text');
 
-var ideas = JSON.parse(localStorage.getItem('ideaArray')) || [];
-
-var mainSection = document.getElementById('main');
+var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
 var card = document.querySelector('article');
 // card.dataset.id
@@ -25,7 +23,7 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 
 saveBtn.addEventListener('click', saveIdea);
 
-mainSection.addEventListener('click', deleteCard)
+mainContent.addEventListener('click', deleteCard)
 
 window.addEventListener('load', recallIdeas);
 
@@ -85,9 +83,9 @@ function appendCard(idea) {
     </article>`)
 }
 
-function persistCard(title, body) {
+function persistCard(title, body, id) {
   userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article class="card">
+  mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${id}">
       <header>
         <img src="images/star.svg" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
@@ -114,13 +112,41 @@ function clearFields() {
 function recallIdeas() {
   for (var i=0; i < ideas.length; i++) {
     var reconstructedIdea = new Idea(ideas[i])
-    persistCard(reconstructedIdea.title, reconstructedIdea.body);
+    persistCard(reconstructedIdea.title, reconstructedIdea.body, reconstructedIdea.id);
   }
 }
 
 function deleteCard(event) {
-  console.log('ClickyClicky')
+  console.log(event.target)
   if (event.target.closest('#white-x-img')) {
-  event.target.closest('.card').remove();
+  var thing = event.target.closest('.card').remove();
+  console.log(thing)
+  var findit = event.target.____________.date-id
+  console.log(findIt)
   } 
+  // var oldIdeas = JSON.parse(localStorage.getItem(ideas));
+  // deleteFromStorage(oldIdeas)
+
 }
+
+//Get ID from event capture (line 124)
+//Make a new instantiation of class Idea
+//  make the object information
+// var a;sldkf = new Idea ({id: ID, title: '', })
+
+// var oldIdeas = asldkjsldfkj
+
+// newObject.deleteFromStorage(oldIDeas)
+
+
+
+//deleteFromStorage should be invoked in deleteCard function.
+//We are going to have to push our object through to be able to identify a card by its unique ID
+//pull down array from local storage
+//use find method to find object with that unique ID
+//put shorter array back into local storage
+
+
+
+
+
