@@ -20,22 +20,9 @@ class Idea {
     this.saveToStorage(shortArray)
   }
 
-
-
-
-      // shorterArray(saveToStorage)
-
-  // console.log('yellow', cardId)
-  // for (var i=0; i < ideas.length; i++) {
-  //   if (ideas[i].id === 'cardId')
-  //     ideas.splice(ideas[i].id)
-
-
-  // get stuff from storgage
-  // reset new ideas into that array
-  // save that array to storage
-
   updateIdea() {
+    //push reassigned obj into array
+    //push new array into local storage
   }
   updateQuality(){
   }

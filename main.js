@@ -16,6 +16,9 @@ var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
 var card = document.querySelector('article');
 // card.dataset.id
+var titleOutput = document.getElementById('idea-title-output');
+
+var bodyOutput = document.getElementById('idea-body-output');
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
@@ -23,11 +26,19 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 
 saveBtn.addEventListener('click', saveIdea);
 
-mainContent.addEventListener('click', deleteCard)
+mainContent.addEventListener('click', deleteCard);
 
 window.addEventListener('load', recallIdeas);
 
-window.addEventListener('load', reinstantiateIdeas(ideas))
+window.addEventListener('load', reinstantiateIdeas(ideas));
+
+// titleOutput.addEventListener('click', getUniqueId(obj));
+
+// bodyOutput.addEventListener('click', getUniqueId(obj));
+
+mainContent.addEventListener('focusout', updateContent);
+
+
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -90,8 +101,8 @@ function appendCard(idea) {
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
-        <h3 id="idea-title-output">${idea.title}</h3>
-        <p id="idea-body-output">
+        <h3 id="idea-title-output" contenteditable="true">${idea.title}</h3>
+        <p id="idea-body-output" contenteditable="true">
           ${idea.body}
         </p>
       </main>
@@ -111,8 +122,8 @@ function persistCard(title, body, id) {
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
-        <h3 id="idea-title-output">${title}</h3>
-        <p id="idea-body-output">
+        <h3 id="idea-title-output" contenteditable="true">${title}</h3>
+        <p id="idea-body-output" contenteditable="true">
           ${body}
         </p>
       </main>
@@ -138,43 +149,32 @@ function recallIdeas() {
 
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
-  var cardId = event.target.closest('.card').getAttribute('data-id');
+  var cardId = getUniqueId(event);
   event.target.closest('.card').remove();
   idea.deleteFromStorage(ideas, cardId);
   }
 }
 
+function getUniqueId(event) {
+  return event.target.closest('.card').getAttribute('data-id');
+}
+
+function updateContent() {
+  var cardId = getUniqueId(event);
+  
+  editedObj.title = titleOutput.value;
+  editedObj.body = bodyOutput.value;
+  }
 
 
 
+//grab value of update title text
+//assign to a var
+//reassign obj.title to our new var
+//invoke update idea
+//update local storage
+//
 
 
-// class DeleteCard extends Idea {
-//   constructor() {
-//     super(ideasToShorten);
-//   }
-// }
-
-
-
-  // deleteFromStorage(oldIdeas)
-
-
-//Get ID from event capture (line 124)
-//Make a new instantiation of class Idea
-//  make the object information
-// var a;sldkf = new Idea ({id: ID, title: '', })
-
-// var oldIdeas = asldkjsldfkj
-
-// newObject.deleteFromStorage(oldIDeas)
-
-
-
-//deleteFromStorage should be invoked in deleteCard function.
-//We are going to have to push our object through to be able to identify a card by its unique ID
-//pull down array from local storage
-//use find method to find object with that unique ID
-//put shorter array back into local storage
 
 
