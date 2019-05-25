@@ -27,6 +27,8 @@ mainContent.addEventListener('click', deleteCard)
 
 window.addEventListener('load', recallIdeas);
 
+window.addEventListener('load', reinstantiateIdeas(ideas))
+
 function enableSaveBtn() {
   saveBtn.disabled = false;
   disableSaveBtn();
@@ -36,6 +38,25 @@ function disableSaveBtn() {
   if (titleInput.value === "" || bodyInput.value === "") {
     saveBtn.disabled = true;
   }
+}
+
+function reinstantiateIdeas() {
+  var newIdeas = ideas; 
+   newIdeas.map(function(object) {
+    turnObjectIntoIdeas(object);
+   })
+}
+
+function turnObjectIntoIdeas(obj){
+  var uniqueId = obj.id
+  var ideaTitle = obj.title
+  var ideaBody = obj.body
+  idea = new Idea({
+    id: uniqueId,
+    title: ideaTitle,
+    body: ideaBody,
+  })
+  console.log('happy bday Amy!', idea)
 }
 
 function createIdeaObj() {
@@ -118,19 +139,15 @@ function recallIdeas() {
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
   var cardId = event.target.closest('.card').getAttribute('data-id');
-  console.log(cardId)
-  var cardIndex = ideas.findIndex(el => el.id == cardId)
-  console.log(cardIndex)
   event.target.closest('.card').remove();
-  var dltCard = new DeleteCard(cardId);
-  dltCard.deleteFromStorage(cardIndex);
-  dltCard.saveToStorage(ideas);
+  var dltCard = new DeleteCard(ideas);
+  dltCard.deleteFromStorage(ideas, cardId)
   }
 }
 
 class DeleteCard extends Idea {
-  constructor(id) {
-    super(id);
+  constructor() {
+    super(ideasToShorten);
   }
 }
 

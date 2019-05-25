@@ -3,8 +3,8 @@ class Idea {
     this.id = obj.id;
     this.title = obj.title;
     this.body = obj.body;
-    this.star = false;
-    this.quality = 0;
+    this.star = obj.star || false;
+    this.quality = obj.quality || 0;
   }
 
   saveToStorage(ideas) {
@@ -12,12 +12,16 @@ class Idea {
     localStorage.setItem('ideasArray', allIdeas);
   }
 
-  deleteFromStorage(index) {
-    ideas.splice(index, 1);
-    // JSON.stringify(ideas);
-    // this.saveToStorage(ideas);
-    // console.log('Hello, Amy', ideas)
+  deleteFromStorage(shortIdeas, id) {
+    var shortArray = shortIdeas.filter(function(idea) {
+    return idea.id != id
+    });
+    console.log('Hi, Alyssa ' , shortArray)
+    savetoStorage(shortArray)
   }
+
+
+
 
       // shorterArray(saveToStorage)
 
