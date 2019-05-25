@@ -56,8 +56,7 @@ function saveIdea() {
   var newIdea = new Idea(ideaObj);
   appendCard(newIdea);
   ideas.push(newIdea);
-  var allIdeas = JSON.stringify(ideas);
-  newIdea.saveToStorage(allIdeas);
+  newIdea.saveToStorage(ideas);
   clearFields();
   disableSaveBtn();
 };

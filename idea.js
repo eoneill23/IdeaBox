@@ -8,7 +8,8 @@ class Idea {
   }
 
   saveToStorage(ideas) {
-    localStorage.setItem('ideasArray', ideas);
+    var allIdeas = JSON.stringify(ideas)
+    localStorage.setItem('ideasArray', allIdeas);
   }
 
   deleteFromStorage(index) {
