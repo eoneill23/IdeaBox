@@ -117,17 +117,28 @@ function recallIdeas() {
 }
 
 function deleteCard(event) {
-  console.log(event.target)
   if (event.target.closest('#white-x-img')) {
-  var thing = event.target.closest('.card').remove();
-  console.log(thing)
-  var findit = event.target.____________.date-id
-  console.log(findIt)
-  } 
-  // var oldIdeas = JSON.parse(localStorage.getItem(ideas));
+  var cardId = event.target.closest('.card').getAttribute('data-id');
+  console.log(cardId)
+  var cardIndex = ideas.findIndex(el => el.id == cardId)
+  console.log(cardIndex)
+  event.target.closest('.card').remove();
+  var dltCard = new DeleteCard(cardId);
+  dltCard.deleteFromStorage(cardIndex);
+  dltCard.saveToStorage(ideas);
+  }
+}
+
+class DeleteCard extends Idea {
+  constructor(id) {
+    super(id);
+  }
+}
+
+
+
   // deleteFromStorage(oldIdeas)
 
-}
 
 //Get ID from event capture (line 124)
 //Make a new instantiation of class Idea
@@ -145,8 +156,5 @@ function deleteCard(event) {
 //pull down array from local storage
 //use find method to find object with that unique ID
 //put shorter array back into local storage
-
-
-
 
 

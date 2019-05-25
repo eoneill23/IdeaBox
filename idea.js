@@ -6,16 +6,30 @@ class Idea {
     this.star = false;
     this.quality = 0;
   }
+
   saveToStorage(ideas) {
     localStorage.setItem('ideasArray', ideas);
   }
-  deleteFromStorage(oldIdeas) {
+
+  deleteFromStorage(index) {
+    ideas.splice(index, 1);
+    // JSON.stringify(ideas);
+    // this.saveToStorage(ideas);
+    // console.log('Hello, Amy', ideas)
+  }
+
+      // shorterArray(saveToStorage)
+
+  // console.log('yellow', cardId)
+  // for (var i=0; i < ideas.length; i++) {
+  //   if (ideas[i].id === 'cardId')
+  //     ideas.splice(ideas[i].id)
+
+
   // get stuff from storgage
   // reset new ideas into that array
   // save that array to storage
 
-
-  }
   updateIdea() {
   }
   updateQuality(){
