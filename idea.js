@@ -3,19 +3,38 @@ class Idea {
     this.id = obj.id;
     this.title = obj.title;
     this.body = obj.body;
-    this.star = false;
-    this.quality = 0;
+    this.star = obj.star || false;
+    this.quality = obj.quality || 0;
   }
+
   saveToStorage(ideas) {
-    localStorage.setItem('ideasArray', ideas);
+    var allIdeas = JSON.stringify(ideas)
+    localStorage.setItem('ideasArray', allIdeas);
   }
-  deleteFromStorage(oldIdeas) {
+
+  deleteFromStorage(shortIdeas, id) {
+    var shortArray = shortIdeas.filter(function(idea) {
+    return idea.id != id
+    });
+    console.log('Hi, Alyssa ' , shortArray)
+    this.saveToStorage(shortArray)
+  }
+
+
+
+
+      // shorterArray(saveToStorage)
+
+  // console.log('yellow', cardId)
+  // for (var i=0; i < ideas.length; i++) {
+  //   if (ideas[i].id === 'cardId')
+  //     ideas.splice(ideas[i].id)
+
+
   // get stuff from storgage
   // reset new ideas into that array
   // save that array to storage
 
-
-  }
   updateIdea() {
   }
   updateQuality(){

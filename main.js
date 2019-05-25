@@ -27,6 +27,8 @@ mainContent.addEventListener('click', deleteCard)
 
 window.addEventListener('load', recallIdeas);
 
+window.addEventListener('load', reinstantiateIdeas(ideas))
+
 function enableSaveBtn() {
   saveBtn.disabled = false;
   disableSaveBtn();
@@ -36,6 +38,25 @@ function disableSaveBtn() {
   if (titleInput.value === "" || bodyInput.value === "") {
     saveBtn.disabled = true;
   }
+}
+
+function reinstantiateIdeas() {
+  var newIdeas = ideas; 
+   newIdeas.map(function(object) {
+    turnObjectIntoIdeas(object);
+   })
+}
+
+function turnObjectIntoIdeas(obj){
+  var uniqueId = obj.id
+  var ideaTitle = obj.title
+  var ideaBody = obj.body
+  idea = new Idea({
+    id: uniqueId,
+    title: ideaTitle,
+    body: ideaBody,
+  })
+  console.log('happy bday Amy!', idea)
 }
 
 function createIdeaObj() {
@@ -56,8 +77,7 @@ function saveIdea() {
   var newIdea = new Idea(ideaObj);
   appendCard(newIdea);
   ideas.push(newIdea);
-  var allIdeas = JSON.stringify(ideas);
-  newIdea.saveToStorage(allIdeas);
+  newIdea.saveToStorage(ideas);
   clearFields();
   disableSaveBtn();
 };
@@ -117,17 +137,28 @@ function recallIdeas() {
 }
 
 function deleteCard(event) {
-  console.log(event.target)
   if (event.target.closest('#white-x-img')) {
-  var thing = event.target.closest('.card').remove();
-  console.log(thing)
-  var findit = event.target.____________.date-id
-  console.log(findIt)
-  } 
-  // var oldIdeas = JSON.parse(localStorage.getItem(ideas));
+  var cardId = event.target.closest('.card').getAttribute('data-id');
+  event.target.closest('.card').remove();
+  idea.deleteFromStorage(ideas, cardId);
+  }
+}
+
+
+
+
+
+
+// class DeleteCard extends Idea {
+//   constructor() {
+//     super(ideasToShorten);
+//   }
+// }
+
+
+
   // deleteFromStorage(oldIdeas)
 
-}
 
 //Get ID from event capture (line 124)
 //Make a new instantiation of class Idea
@@ -145,8 +176,5 @@ function deleteCard(event) {
 //pull down array from local storage
 //use find method to find object with that unique ID
 //put shorter array back into local storage
-
-
-
 
 
