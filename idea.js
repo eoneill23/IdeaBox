@@ -17,7 +17,7 @@ class Idea {
     return idea.id != id
     });
     console.log('Hi, Alyssa ' , shortArray)
-    savetoStorage(shortArray)
+    this.saveToStorage(shortArray)
   }
 
 

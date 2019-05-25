@@ -140,16 +140,20 @@ function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
   var cardId = event.target.closest('.card').getAttribute('data-id');
   event.target.closest('.card').remove();
-  var dltCard = new DeleteCard(ideas);
-  dltCard.deleteFromStorage(ideas, cardId)
+  idea.deleteFromStorage(ideas, cardId);
   }
 }
 
-class DeleteCard extends Idea {
-  constructor() {
-    super(ideasToShorten);
-  }
-}
+
+
+
+
+
+// class DeleteCard extends Idea {
+//   constructor() {
+//     super(ideasToShorten);
+//   }
+// }
 
 
 
