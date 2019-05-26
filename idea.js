@@ -17,10 +17,12 @@ class Idea {
     this.saveToStorage(ideas);
   }
 
-  updateIdea() {
-    //push reassigned obj into array
-    //push new array into local storage
+  updateIdea(title, body) {
+    this.title = title;
+    this.body = body;
+    this.saveToStorage(ideas);
   }
+
   updateQuality(){
   }
 }
