@@ -109,16 +109,21 @@ function clearFields() {
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
   var cardId = getUniqueId(event);
+  var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
   console.log('hi ', cardId);
-  const targetIdea = ideas.find(idea => idea.id === cardId)
-  targetIdea.deleteFromStorage()
-  ideas.deleteFromStorage(ideas, cardId);
+  ideas[cardIndex].deleteFromStorage(cardIndex, cardId);
   }
 }
 
 function getUniqueId(event) {
   return event.target.closest('.card').getAttribute('data-id');
+}
+
+function getCardIndex(id){
+  return ideas.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id)
+  })
 }
 
 function updateContent(event) {

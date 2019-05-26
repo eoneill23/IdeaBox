@@ -12,7 +12,7 @@ class Idea {
     localStorage.setItem('ideasArray', allIdeas);
   }
 
-  deleteFromStorage(shortIdeas, id) {
+  deleteFromStorage(index, id) {
     var shortArray = shortIdeas.filter(function(idea) {
     return idea.id !== id;
     });
