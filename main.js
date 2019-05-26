@@ -16,9 +16,10 @@ var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
 var card = document.querySelector('article');
 // card.dataset.id
-var titleOutput = document.getElementById('idea-title-output');
 
-var bodyOutput = document.getElementById('idea-body-output');
+// var titleOutput = document.getElementById('idea-title-output');
+
+// var bodyOutput = document.getElementById('idea-body-output');
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
@@ -34,7 +35,7 @@ window.addEventListener('load', mapLocalStorage(ideas));
 
 // bodyOutput.addEventListener('click', getUniqueId(obj));
 
-mainContent.addEventListener('onchange', updateContent);
+mainContent.addEventListener('focusout', updateContent);
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -127,8 +128,13 @@ function getCardIndex(id){
 
 function updateContent(event) {
   var cardId = getUniqueId(event);
-  var title = event.target.closest('.card').getAttribute('data-title');
-  console.log('hi ', title);
+  var cardIndex = getCardIndex(cardId);
+  var newTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
+console.log('whats good', newTitle)
+
+
+  // event.target.closest('.card').getAttribute('data-title');
+
   
   // editedObj.title = titleOutput.value;
   // editedObj.body = bodyOutput.value;
