@@ -27,9 +27,7 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 saveBtn.addEventListener('click', handleSaveButton);
 
 mainContent.addEventListener('click', deleteCard);
-
-//  
-
+ 
 window.addEventListener('load', mapLocalStorage(ideas));
 
 // titleOutput.addEventListener('click', getUniqueId(obj));
@@ -37,8 +35,6 @@ window.addEventListener('load', mapLocalStorage(ideas));
 // bodyOutput.addEventListener('click', getUniqueId(obj));
 
 mainContent.addEventListener('onchange', updateContent);
-
-
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -51,13 +47,13 @@ function disableSaveBtn() {
   }
 }
 
-function mapLocalStorage(ideas) {
-  var newIdeas = ideas.map(function(object) {
+function mapLocalStorage(oldIdeas) {
+  console.log('load')
+  var newIdeas = oldIdeas.map(function(object) {
     return turnObjectIntoIdeas(object);
   })
-  // ideas[0].saveToStorage(ideas);
 
-  console.log('Hello ', newIdeas)
+  ideas = newIdeas;
 }
 
 function turnObjectIntoIdeas(obj){
@@ -69,11 +65,8 @@ function turnObjectIntoIdeas(obj){
     title: ideaTitle,
     body: ideaBody,
   })
-  console.log(newIdea)
   appendCard(newIdea);
-
   return newIdea;
-
 }
 
 function handleSaveButton() {
@@ -116,14 +109,20 @@ function clearFields() {
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
   var cardId = getUniqueId(event);
+  var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
-  idea.deleteFromStorage(ideas, cardId);
-  console.log('hi ', cardId);
+  ideas[cardIndex].deleteFromStorage(cardIndex);
   }
 }
 
 function getUniqueId(event) {
   return event.target.closest('.card').getAttribute('data-id');
+}
+
+function getCardIndex(id){
+  return ideas.findIndex(function(arrayObj) {
+    return arrayObj.id == parseInt(id)
+  })
 }
 
 function updateContent(event) {
