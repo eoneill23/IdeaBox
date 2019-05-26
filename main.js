@@ -111,8 +111,7 @@ function deleteCard(event) {
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
-  console.log('hi ', cardId);
-  ideas[cardIndex].deleteFromStorage(cardIndex, cardId);
+  ideas[cardIndex].deleteFromStorage(cardIndex);
   }
 }
 

@@ -12,13 +12,9 @@ class Idea {
     localStorage.setItem('ideasArray', allIdeas);
   }
 
-  deleteFromStorage(index, id) {
-    var shortArray = shortIdeas.filter(function(idea) {
-    return idea.id !== id;
-    });
-    shortIdeas = shortArray
-    this.saveToStorage(shortIdeas);
-    console.log('Hi, Alyssa ' , shortIdeas)
+  deleteFromStorage(index) {
+    ideas.splice(index, 1)
+    this.saveToStorage(ideas);
   }
 
   updateIdea() {
