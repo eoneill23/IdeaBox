@@ -14,28 +14,16 @@ class Idea {
 
   deleteFromStorage(shortIdeas, id) {
     var shortArray = shortIdeas.filter(function(idea) {
-    return idea.id != id
+    return idea.id !== id;
     });
-    console.log('Hi, Alyssa ' , shortArray)
-    this.saveToStorage(shortArray)
+    shortIdeas = shortArray
+    this.saveToStorage(shortIdeas);
+    console.log('Hi, Alyssa ' , shortIdeas)
   }
 
-
-
-
-      // shorterArray(saveToStorage)
-
-  // console.log('yellow', cardId)
-  // for (var i=0; i < ideas.length; i++) {
-  //   if (ideas[i].id === 'cardId')
-  //     ideas.splice(ideas[i].id)
-
-
-  // get stuff from storgage
-  // reset new ideas into that array
-  // save that array to storage
-
   updateIdea() {
+    //push reassigned obj into array
+    //push new array into local storage
   }
   updateQuality(){
   }

@@ -16,18 +16,29 @@ var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
 var card = document.querySelector('article');
 // card.dataset.id
+var titleOutput = document.getElementById('idea-title-output');
+
+var bodyOutput = document.getElementById('idea-body-output');
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
 bodyInput.addEventListener('keyup', enableSaveBtn);
 
-saveBtn.addEventListener('click', saveIdea);
+saveBtn.addEventListener('click', handleSaveButton);
 
-mainContent.addEventListener('click', deleteCard)
+mainContent.addEventListener('click', deleteCard);
 
-window.addEventListener('load', recallIdeas);
+//  
 
-window.addEventListener('load', reinstantiateIdeas(ideas))
+window.addEventListener('load', mapLocalStorage(ideas));
+
+// titleOutput.addEventListener('click', getUniqueId(obj));
+
+// bodyOutput.addEventListener('click', getUniqueId(obj));
+
+mainContent.addEventListener('onchange', updateContent);
+
+
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -40,42 +51,35 @@ function disableSaveBtn() {
   }
 }
 
-function reinstantiateIdeas() {
-  var newIdeas = ideas; 
-   newIdeas.map(function(object) {
-    turnObjectIntoIdeas(object);
-   })
+function mapLocalStorage(ideas) {
+  var newIdeas = ideas.map(function(object) {
+    return turnObjectIntoIdeas(object);
+  })
+  // ideas[0].saveToStorage(ideas);
+
+  console.log('Hello ', newIdeas)
 }
 
 function turnObjectIntoIdeas(obj){
   var uniqueId = obj.id
   var ideaTitle = obj.title
   var ideaBody = obj.body
-  idea = new Idea({
+  var newIdea = new Idea({
     id: uniqueId,
     title: ideaTitle,
     body: ideaBody,
   })
-  console.log('happy bday Amy!', idea)
+  console.log(newIdea)
+  appendCard(newIdea);
+
+  return newIdea;
+
 }
 
-function createIdeaObj() {
-  var uniqueId = Date.now();
-  var titleInputValue = titleInput.value;
-  var bodyInputValue = bodyInput.value;
-  var obj = {
-    id: uniqueId,
-    title: titleInputValue,
-    body: bodyInputValue
-  }
-  return obj
-} 
-
-function saveIdea() {
+function handleSaveButton() {
   event.preventDefault();
-  var ideaObj = createIdeaObj();
-  var newIdea = new Idea(ideaObj);
-  appendCard(newIdea);
+  var newIdea = new Idea({id: Date.now(), title: titleInput.value, body: bodyInput.value, star: false, quality: 0});
+  turnObjectIntoIdeas(newIdea)
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas);
   clearFields();
@@ -90,30 +94,9 @@ function appendCard(idea) {
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
-        <h3 id="idea-title-output">${idea.title}</h3>
-        <p id="idea-body-output">
+        <h3 id="idea-title-output" contenteditable="true">${idea.title}</h3>
+        <p id="idea-body-output" contenteditable="true">
           ${idea.body}
-        </p>
-      </main>
-      <footer>
-        <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
-        <p>Quality: Swill</p>
-        <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
-      </footer>
-    </article>`)
-}
-
-function persistCard(title, body, id) {
-  userPrompt.classList.add('hidden');
-  mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${id}">
-      <header>
-        <img src="images/star.svg" alt="Star rating" id="white-star-img">
-        <img src="images/delete.svg" alt="Delete x" id="white-x-img">
-      </header>
-      <main id="card-body">
-        <h3 id="idea-title-output">${title}</h3>
-        <p id="idea-body-output">
-          ${body}
         </p>
       </main>
       <footer>
@@ -129,52 +112,30 @@ function clearFields() {
   bodyInput.value = '';
 }
 
-function recallIdeas() {
-  for (var i=0; i < ideas.length; i++) {
-    var reconstructedIdea = new Idea(ideas[i])
-    persistCard(reconstructedIdea.title, reconstructedIdea.body, reconstructedIdea.id);
-  }
-}
 
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
-  var cardId = event.target.closest('.card').getAttribute('data-id');
+  var cardId = getUniqueId(event);
   event.target.closest('.card').remove();
   idea.deleteFromStorage(ideas, cardId);
+  console.log('hi ', cardId);
   }
 }
 
+function getUniqueId(event) {
+  return event.target.closest('.card').getAttribute('data-id');
+}
+
+function updateContent(event) {
+  var cardId = getUniqueId(event);
+  var title = event.target.closest('.card').getAttribute('data-title');
+  console.log('hi ', title);
+  
+  // editedObj.title = titleOutput.value;
+  // editedObj.body = bodyOutput.value;
+  }
 
 
 
-
-
-// class DeleteCard extends Idea {
-//   constructor() {
-//     super(ideasToShorten);
-//   }
-// }
-
-
-
-  // deleteFromStorage(oldIdeas)
-
-
-//Get ID from event capture (line 124)
-//Make a new instantiation of class Idea
-//  make the object information
-// var a;sldkf = new Idea ({id: ID, title: '', })
-
-// var oldIdeas = asldkjsldfkj
-
-// newObject.deleteFromStorage(oldIDeas)
-
-
-
-//deleteFromStorage should be invoked in deleteCard function.
-//We are going to have to push our object through to be able to identify a card by its unique ID
-//pull down array from local storage
-//use find method to find object with that unique ID
-//put shorter array back into local storage
 
 
