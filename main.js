@@ -53,7 +53,6 @@ function mapLocalStorage(oldIdeas) {
   var newIdeas = oldIdeas.map(function(object) {
     return turnObjectIntoIdeas(object);
   })
-
   ideas = newIdeas;
 }
 
@@ -130,15 +129,12 @@ function updateContent(event) {
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId);
   var newTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
-console.log('whats good', newTitle)
-
-
-  // event.target.closest('.card').getAttribute('data-title');
-
+  var newBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).innerText;
+  ideas[cardIndex].updateIdea(newTitle, newBody);
+}
   
   // editedObj.title = titleOutput.value;
   // editedObj.body = bodyOutput.value;
-  }
 
 
 
