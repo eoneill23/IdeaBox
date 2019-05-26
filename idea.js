@@ -14,10 +14,11 @@ class Idea {
 
   deleteFromStorage(shortIdeas, id) {
     var shortArray = shortIdeas.filter(function(idea) {
-    return idea.id != id
+    return idea.id !== id;
     });
-    console.log('Hi, Alyssa ' , shortArray)
-    this.saveToStorage(shortArray)
+    shortIdeas = shortArray
+    this.saveToStorage(shortIdeas);
+    console.log('Hi, Alyssa ' , shortIdeas)
   }
 
   updateIdea() {
