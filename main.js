@@ -37,6 +37,8 @@ window.addEventListener('load', mapLocalStorage(ideas));
 
 mainContent.addEventListener('focusout', updateContent);
 
+mainContent.addEventListener('keydown', enterUpdateContent);
+
 function enableSaveBtn() {
   saveBtn.disabled = false;
   disableSaveBtn();
@@ -129,10 +131,23 @@ function updateContent(event) {
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId);
   var newTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
+  console.log('helllos', newTitle)
   var newBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).innerText;
+  console.log('body', newBody)
   ideas[cardIndex].updateIdea(newTitle, newBody);
+  var blurTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).blur();
+  var blurBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).blur();
 }
-  
+
+function enterUpdateContent(event) {
+  var key = event.keyCode
+  if (key === 13) {
+      event.preventDefault();
+      updateContent(event);
+
+  }
+ } 
+
   // editedObj.title = titleOutput.value;
   // editedObj.body = bodyOutput.value;
 

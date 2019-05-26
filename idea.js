@@ -23,9 +23,6 @@ class Idea {
     this.saveToStorage(ideas);
   }
 
-    //push reassigned obj into array
-    //push new array into local storage
-
   updateQuality(){
   }
 }
