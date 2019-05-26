@@ -24,13 +24,13 @@ titleInput.addEventListener('keyup', enableSaveBtn);
 
 bodyInput.addEventListener('keyup', enableSaveBtn);
 
-saveBtn.addEventListener('click', saveIdea);
+saveBtn.addEventListener('click', handleSaveButton);
 
 mainContent.addEventListener('click', deleteCard);
 
 //  
 
-window.addEventListener('load', reinstantiateIdeas(ideas));
+window.addEventListener('load', mapLocalStorage(ideas));
 
 // titleOutput.addEventListener('click', getUniqueId(obj));
 
@@ -51,46 +51,35 @@ function disableSaveBtn() {
   }
 }
 
-function reinstantiateIdeas() {
-  var newIdeas = ideas; 
-  //PULL IDEAS ARRAY DOWN AND RUN EACH OBJECT THROUGH CONSTRUCTOR
-   newIdeas.map(function(object) {
-    turnObjectIntoIdeas(object);
-    appendCard(object);
-    return newIdeas;
-   })
-   ideas = newIdeas;
+function mapLocalStorage(ideas) {
+  var newIdeas = ideas.map(function(object) {
+    return turnObjectIntoIdeas(object);
+  })
+  // ideas[0].saveToStorage(ideas);
+
+  console.log('Hello ', newIdeas)
 }
 
 function turnObjectIntoIdeas(obj){
   var uniqueId = obj.id
   var ideaTitle = obj.title
   var ideaBody = obj.body
-  idea = new Idea({
+  var newIdea = new Idea({
     id: uniqueId,
     title: ideaTitle,
     body: ideaBody,
   })
-  console.log('happy bday Amy!', idea)
+  console.log(newIdea)
+  appendCard(newIdea);
+
+  return newIdea;
+
 }
 
-function createIdeaObj() {
-  var uniqueId = Date.now();
-  var titleInputValue = titleInput.value;
-  var bodyInputValue = bodyInput.value;
-  var obj = {
-    id: uniqueId,
-    title: titleInputValue,
-    body: bodyInputValue
-  }
-  return obj
-} 
-
-function saveIdea() {
+function handleSaveButton() {
   event.preventDefault();
-  var ideaObj = createIdeaObj();
-  var newIdea = new Idea(ideaObj);
-  appendCard(newIdea);
+  var newIdea = new Idea({id: Date.now(), title: titleInput.value, body: bodyInput.value, star: false, quality: 0});
+  turnObjectIntoIdeas(newIdea)
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas);
   clearFields();
@@ -118,38 +107,11 @@ function appendCard(idea) {
     </article>`)
 }
 
-// function persistCard(title, body, id) {
-//   userPrompt.classList.add('hidden');
-//   mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${id}">
-//       <header>
-//         <img src="images/star.svg" alt="Star rating" id="white-star-img">
-//         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
-//       </header>
-//       <main id="card-body">
-//         <h3 id="idea-title-output" contenteditable="true" data-title="${title}">${title}</h3>
-//         <p id="idea-body-output" contenteditable="true">
-//           ${body}
-//         </p>
-//       </main>
-//       <footer>
-//         <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
-//         <p>Quality: Swill</p>
-//         <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
-//       </footer>
-//     </article>`)
-// }
-
 function clearFields() {
   titleInput.value = '';
   bodyInput.value = '';
 }
 
-// function recallIdeas() {
-//   for (var i=0; i < ideas.length; i++) {
-//     var reconstructedIdea = new Idea(ideas[i])
-//     persistCard(reconstructedIdea.title, reconstructedIdea.body, reconstructedIdea.id);
-//   }
-// }
 
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
@@ -173,14 +135,6 @@ function updateContent(event) {
   // editedObj.body = bodyOutput.value;
   }
 
-
-
-//grab value of update title text
-//assign to a var
-//reassign obj.title to our new var
-//invoke update idea
-//update local storage
-//
 
 
 
