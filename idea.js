@@ -17,11 +17,16 @@ class Idea {
     this.saveToStorage(ideas);
   }
 
-  updateIdea(title, body, star) {
-    this.title = title || obj.title;
-    this.body = body || obj.body;
-    this.star = star || obj.star;
+  updateIdea(title, body) {
+    this.title = title;
+    this.body = body;
     this.saveToStorage(ideas);
+  }
+
+  updateStar() {
+    this.star = !this.star
+    this.saveToStorage(ideas);
+    return this.star;
   }
 
   updateQuality(){

@@ -54,10 +54,13 @@ function turnObjectIntoIdeas(obj){
   var uniqueId = obj.id
   var ideaTitle = obj.title
   var ideaBody = obj.body
+  var ideaStar = obj.star
+  console.log('Yooooooooooooo ', ideaStar)
   var newIdea = new Idea({
     id: uniqueId,
     title: ideaTitle,
     body: ideaBody,
+    star: ideaStar,
   })
   appendCard(newIdea);
   return newIdea;
@@ -75,9 +78,10 @@ function handleSaveButton() {
 
 function appendCard(idea) {
   userPrompt.classList.add('hidden');
+  var starStatus = idea.star ? 'star-active.svg' : 'star.svg' 
   mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${idea.id}">
       <header>
-        <img src="${images/star.svg}" alt="Star rating" id="white-star-img">
+        <img src="images/${starStatus}" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
@@ -129,7 +133,7 @@ function updateContent(event) {
   var cardIndex = getCardIndex(cardId);
   var newTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
   var newBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).innerText;
-  ideas[cardIndex].updateIdea(newTitle, newBody, newStar);
+  ideas[cardIndex].updateIdea(newTitle, newBody);
   var blurTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).blur();
   var blurBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).blur();
 }
@@ -146,13 +150,15 @@ function enterUpdateContent(event) {
   if (event.target.closest('#white-star-img')) {  
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId);
-  document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
-  var newStar = true;
-  // var img template literal = src yellow star
-  ideas[cardIndex].updateIdea(newTitle, newBody, newStar);
+  var yellowStar = 'images/star-active.svg'; 
+  var oldStar = document.querySelector(`.card[data-id="${cardId}"] #white-star-img`);
+  oldStar.src = yellowStar
+  ideas[cardIndex].updateStar();
+  if (ideas[cardIndex].star === false) {
+    var whiteStar = 'images/star.svg'
+    oldStar.src = whiteStar;
+    } else {
+      oldStar.src = yellowStar;
+    }
   }
- }
-
-
-
-
+}
