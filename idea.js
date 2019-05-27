@@ -17,9 +17,10 @@ class Idea {
     this.saveToStorage(ideas);
   }
 
-  updateIdea(title, body) {
-    this.title = title;
-    this.body = body;
+  updateIdea(title, body, star) {
+    this.title = title || obj.title;
+    this.body = body || obj.body;
+    this.star = star || obj.star;
     this.saveToStorage(ideas);
   }
 

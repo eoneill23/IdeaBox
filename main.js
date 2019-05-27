@@ -15,11 +15,6 @@ var userPrompt = document.getElementById('user-prompt-text');
 var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
 var card = document.querySelector('article');
-// card.dataset.id
-
-// var titleOutput = document.getElementById('idea-title-output');
-
-// var bodyOutput = document.getElementById('idea-body-output');
 
 titleInput.addEventListener('keyup', enableSaveBtn);
 
@@ -27,17 +22,14 @@ bodyInput.addEventListener('keyup', enableSaveBtn);
 
 saveBtn.addEventListener('click', handleSaveButton);
 
-mainContent.addEventListener('click', deleteCard);
+mainContent.addEventListener('click', clickHandler);
  
-window.addEventListener('load', mapLocalStorage(ideas));
-
-// titleOutput.addEventListener('click', getUniqueId(obj));
-
-// bodyOutput.addEventListener('click', getUniqueId(obj));
-
 mainContent.addEventListener('focusout', updateContent);
 
 mainContent.addEventListener('keydown', enterUpdateContent);
+
+window.addEventListener('load', mapLocalStorage(ideas));
+
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -85,7 +77,7 @@ function appendCard(idea) {
   userPrompt.classList.add('hidden');
   mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${idea.id}">
       <header>
-        <img src="images/star.svg" alt="Star rating" id="white-star-img">
+        <img src="${images/star.svg}" alt="Star rating" id="white-star-img">
         <img src="images/delete.svg" alt="Delete x" id="white-x-img">
       </header>
       <main id="card-body">
@@ -107,9 +99,14 @@ function clearFields() {
   bodyInput.value = '';
 }
 
+function clickHandler(event) {
+  deleteCard(event)
+  updateStarBtn(event)
+}
 
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
+  console.log('Allo, guvnah')
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
@@ -131,10 +128,8 @@ function updateContent(event) {
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId);
   var newTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
-  console.log('helllos', newTitle)
   var newBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).innerText;
-  console.log('body', newBody)
-  ideas[cardIndex].updateIdea(newTitle, newBody);
+  ideas[cardIndex].updateIdea(newTitle, newBody, newStar);
   var blurTitle = document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).blur();
   var blurBody = document.querySelector(`.card[data-id="${cardId}"] #idea-body-output`).blur();
 }
@@ -144,13 +139,19 @@ function enterUpdateContent(event) {
   if (key === 13) {
       event.preventDefault();
       updateContent(event);
-
   }
  } 
 
-  // editedObj.title = titleOutput.value;
-  // editedObj.body = bodyOutput.value;
-
+ function updateStarBtn(event) {
+  if (event.target.closest('#white-star-img')) {  
+  var cardId = getUniqueId(event);
+  var cardIndex = getCardIndex(cardId);
+  document.querySelector(`.card[data-id="${cardId}"] #idea-title-output`).innerText;
+  var newStar = true;
+  // var img template literal = src yellow star
+  ideas[cardIndex].updateIdea(newTitle, newBody, newStar);
+  }
+ }
 
 
 
