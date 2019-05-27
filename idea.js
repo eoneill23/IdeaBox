@@ -29,6 +29,12 @@ class Idea {
     return this.star;
   }
 
-  updateQuality(){
+  updateQuality(direction) {
+    if (this.quality < (qualities.length -1) && direction == 'up') {
+    this.quality ++;
+  }  else if (this.quality > 0 && direction == 'down') {
+    this.quality --;
+    }
+  this.saveToStorage(ideas);
   }
 }

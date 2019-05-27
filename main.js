@@ -14,6 +14,8 @@ var userPrompt = document.getElementById('user-prompt-text');
 
 var ideas = JSON.parse(localStorage.getItem('ideasArray')) || [];
 
+var qualities = ['Swill', 'Plausible', 'Genius'];
+
 var card = document.querySelector('article');
 
 titleInput.addEventListener('keyup', enableSaveBtn);
@@ -55,12 +57,13 @@ function turnObjectIntoIdeas(obj){
   var ideaTitle = obj.title
   var ideaBody = obj.body
   var ideaStar = obj.star
-  console.log('Yooooooooooooo ', ideaStar)
+  var ideaQuality = obj.quality
   var newIdea = new Idea({
     id: uniqueId,
     title: ideaTitle,
     body: ideaBody,
     star: ideaStar,
+    quality: ideaQuality,
   })
   appendCard(newIdea);
   return newIdea;
@@ -92,7 +95,7 @@ function appendCard(idea) {
       </main>
       <footer>
         <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
-        <p>Quality: Swill</p>
+        <p >Quality: <span>${qualities[idea.quality]}</span></p>
         <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
       </footer>
     </article>`)
@@ -104,13 +107,14 @@ function clearFields() {
 }
 
 function clickHandler(event) {
-  deleteCard(event)
-  updateStarBtn(event)
+  deleteCard(event);
+  updateStarBtn(event);
+  upvoteBtn(event);
+  downvoteBtn(event);
 }
 
 function deleteCard(event) {
   if (event.target.closest('#white-x-img')) {
-  console.log('Allo, guvnah')
   var cardId = getUniqueId(event);
   var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
@@ -160,5 +164,23 @@ function enterUpdateContent(event) {
     } else {
       oldStar.src = yellowStar;
     }
+  }
+}
+
+function upvoteBtn(event) {
+  if (event.target.closest('#white-upvote-img')) {
+  var cardId = getUniqueId(event);
+  var cardIndex = getCardIndex(cardId); 
+  ideas[cardIndex].updateQuality('up');
+  document.querySelector(`.card[data-id="${cardId}"] span`).innerText = qualities[ideas[cardIndex].quality];
+  }
+}
+
+function downvoteBtn(event) {
+  if (event.target.closest('#white-downvote-img')) {
+  var cardId = getUniqueId(event);
+  var cardIndex = getCardIndex(cardId); 
+  ideas[cardIndex].updateQuality('down');
+  document.querySelector(`.card[data-id="${cardId}"] span`).innerText = qualities[ideas[cardIndex].quality];
   }
 }
