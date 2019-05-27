@@ -23,6 +23,18 @@ class Idea {
     this.saveToStorage(ideas);
   }
 
-  updateQuality(){
+  updateStar() {
+    this.star = !this.star
+    this.saveToStorage(ideas);
+    return this.star;
+  }
+
+  updateQuality(direction) {
+    if (this.quality < (qualities.length -1) && direction == 'up') {
+    this.quality ++;
+  }  else if (this.quality > 0 && direction == 'down') {
+    this.quality --;
+    }
+  this.saveToStorage(ideas);
   }
 }
