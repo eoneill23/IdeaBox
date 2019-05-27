@@ -3,6 +3,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 /*------------------Body------------------*/
 
 body {
@@ -11,7 +15,7 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 43% 57%;
   grid-template-areas: 
     "nav section section section"
     "nav main main main";
@@ -88,6 +92,7 @@ li {
 /*-----------------Idea Form----------------*/
 
 #idea-submission {
+  padding-bottom: 20px;
   background-color: #A9AAD2;
   display: flex;
   grid-area: section;
@@ -148,7 +153,7 @@ div {
 #search-btn {
   height: 40px;
   width: 10%;
-  padding: 10px;
+  padding: 1%;
   background-color: #353567;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -183,7 +188,7 @@ div {
   grid-area: main;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 50%);
+  grid-template-rows: repeat(2, 50%);
 }
 
 article {
@@ -220,7 +225,16 @@ header {
 }
 
 #idea-title-output {
+  width: 200px;
   margin-top: 0;
+}
+
+#idea-body-output {
+  /*height: 65px;*/
+  /*width: 200px;*/
+  max-height: 3ch;
+  max-width: 20ch;
+  text-overflow: ellipsis;
 }
 
 footer {
@@ -240,7 +254,23 @@ footer {
   font-size: 1em;
  }
 
+ #main {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 70%);
+}
 
+}
+
+@media screen and (max-width: 720px) {
+
+ .nav-btns {
+  font-size: .7em;
+ }
+
+#main {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 70%);
+}
 
 }
 
