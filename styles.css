@@ -3,10 +3,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-/*html {
-  height: 100%;
-}*/
-
 /*------------------Body------------------*/
 
 body {
@@ -14,7 +10,6 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  /*grid-template-rows: 43% 57%;*/
   grid-template-areas: 
     "nav section section section"
     "nav main main main";
@@ -91,7 +86,7 @@ li {
 /*-----------------Idea Form----------------*/
 
 #idea-submission {
-  padding-bottom: 20px;
+  padding: 20px 0;
   background-color: #A9AAD2;
   display: flex;
   grid-area: section;
@@ -106,7 +101,6 @@ li {
 }
 
 form {
-  height: 90%;
   width: 50%;
   margin: auto;
   display: flex;
@@ -116,9 +110,9 @@ form {
 #idea-title-input {
   font-size: 1em;
   color: #353567;
+  margin-bottom: 15px;
   border: 1px solid #5356A4;
   height: 40px;
-  margin-bottom: 15px;
 }
 
 #idea-body-input {
@@ -187,11 +181,9 @@ div {
   grid-area: main;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
-  /*grid-template-rows: repeat(2, 50%);*/
 }
 
 article {
-  height: 100%;
   width: 100%;
   border: 1px solid #6E646B;
 }
@@ -216,7 +208,6 @@ article {
 }
 
 header {
-  height: 13%;
   background-color: #1F1F3D;
   display: flex;
   align-items: center;
@@ -229,15 +220,12 @@ header {
 }
 
 #idea-body-output {
-  /*height: 65px;*/
-  /*width: 200px;*/
   max-height: 3ch;
   max-width: 20ch;
   text-overflow: ellipsis;
 }
 
 footer {
-  height: 13%;
   color: #FFFFFF;
   background-color: #5356A4;
   display: flex;
@@ -255,7 +243,6 @@ footer {
 
  #main {
   grid-template-columns: repeat(2, 1fr);
-  /*grid-template-rows: repeat(3, 70%);*/
 }
 
 }
@@ -268,7 +255,6 @@ footer {
 
 #main {
   grid-template-columns: repeat(2, 1fr);
-  /*grid-template-rows: repeat(2, 70%);*/
 }
 
 }
