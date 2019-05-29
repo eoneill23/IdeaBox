@@ -8,8 +8,11 @@
 </head>
 <body>
   <nav>
-    <img id="hamburger" src="images/menu.svg">
-    <h1>IdeaBox Redux</h1>
+    <div class="mobileNavMenu">
+      <img id="hamburger" src="images/menu.svg">
+      <h1>IdeaBox Redux</h1>
+    </div>
+    <div class="mobileNav">
     <section class="nav-sections">
       <h2>Filter Starred Ideas</h2>
       <button class="nav-btns" id="show-starred-btn">Show Starred Ideas</button> 
@@ -25,6 +28,7 @@
       <input type="text" id="new-quality-input">
       <button class="nav-btns" id="add-new-quality-btn">Add New Quality</button>
     </section>
+    </div>
   </nav>
   <section id="idea-submission">
     <form>
@@ -33,7 +37,7 @@
       <label class="idea-form-label round-corners" for="idea-body-input">Body</label>
       <textarea type="text" id="idea-body-input" class="round-corners" maxlength="120"></textarea>
       <button disabled id="save-btn" class="round-corners">Save</button>
-      <div>
+      <div class="search">
         <img src="images/search.svg" alt="Search button" id="search-btn">
         <input type="text" placeholder="Search ideas" id="search-input">
       </div>

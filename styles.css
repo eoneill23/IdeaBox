@@ -143,7 +143,7 @@ form {
   background-color: lightgrey;
 }
 
-div {
+.search {
   height: 40px;
   text-align: center;
   display: flex;
@@ -325,6 +325,62 @@ form {
 
 @media screen and (max-width: 420px) {
 
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows:10% ;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "nav"
+    "section"
+    "main";
+  }
+
+  #main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  nav {
+    position: relative;
+  }
+
+  .mobileNav {
+    display: none;
+    position: absolute;
+    background-color: #1F1F3D;
+    width: 100%;
+  }
+
+  .mobileNavMenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+  }
+
+  #hamburger {
+    display: inline;
+  }
+
+  .unHide {
+    display: block;
+  }
+
+  .hide {
+    display: hidden;
+  }
+
+  h1 {
+    border-bottom: none;
+    text-align: center;
+    padding: 0;
+  }
+
+  form {
+    width: 90%;
+  }
 }
 
 }
