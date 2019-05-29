@@ -192,5 +192,13 @@ function downvoteBtn(event) {
 }
 
 function toggleMobileNav() {
+  if (mobileNav.classList.contains('unHide')) {
+    mobileNav.classList.remove('unHide')
+    var menu = 'images/menu.svg';
+    burger.src = menu;
+  } else if (mobileNav.classList !== 'unHide') {
   mobileNav.classList.add('unHide');
+  var xButton = 'images/menu-close.svg';
+  burger.src = xButton;
+  }
 }

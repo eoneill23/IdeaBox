@@ -368,6 +368,10 @@ body {
     display: block;
   }
 
+  .hide {
+    display: hidden;
+  }
+
   h1 {
     border-bottom: none;
     text-align: center;
