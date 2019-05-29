@@ -10,7 +10,7 @@ body {
   height: 100vh;
   margin: 0;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-areas: 
     "nav section section section"
     "nav main main main";
@@ -27,7 +27,7 @@ img {
 /*-------------------Nav-------------------*/
 
 nav {
-  height: 100%;
+  /*height: 100%;*/
   color: #FFFFFF;
   background-color: #1F1F3D;
   grid-area: nav;
@@ -122,7 +122,7 @@ form {
 }
 
 #idea-body-input {
-  min-height: 80px;
+  height: 80px;
   color: #353567;
   font-size: 1em;
   margin-bottom: 20px
@@ -152,7 +152,7 @@ div {
 #search-btn {
   height: 40px;
   width: 10%;
-  padding: 1%;
+  padding: 2%;
   background-color: #353567;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -189,15 +189,16 @@ div {
   grid-template-columns: repeat(3, 1fr);
 }
 
-article {
-  width: 100%;
+.card {
+  min-width: 200px;
+  /*width: 100%;*/
   border: 1px solid #6E646B;
 }
 
 #user-prompt-text {
   color: #aaaaaa;
   text-align: center;
-  margin: 0;
+  margin: auto;
   padding: 40px;
   border: 2px dotted #aaaaaa;
 }
@@ -207,13 +208,15 @@ article {
 }
 
 #card-body {
-  background-color: #FFFFFF;
-  color: #1F1F3D;
+  /*height: 250px;*/
   height: 74%;
+  color: #1F1F3D;
   padding: 20px 15px 20px 15px;
+  background-color: #FFFFFF;
 }
 
 header {
+  /*height: 35px;*/
   height: 13%;
   background-color: #1F1F3D;
   display: flex;
@@ -222,19 +225,27 @@ header {
 }
 
 #idea-title-output {
-  width: 200px;
-  margin-top: 0;
-  max-height: 25px;
+  height: 50px;
+  /*max-height: 50px;*/
+  max-width: 24ch;
+  width: 100%;
+  /*width: 200px;*/
+  font-size: 1em;
+  margin: 0;
   overflow: scroll;
 }
 
 #idea-body-output {
-  max-height: 100px;
-  max-width: 25ch;
+  height: 150px;
+  /*max-height: 150px;*/
+  max-width: 24ch;
+  font-size: 1em;
+  margin: 0;
   overflow: scroll;
 }
 
 footer {
+  /*height: 35px;*/
   height: 13%;
   color: #FFFFFF;
   background-color: #5356A4;
@@ -278,26 +289,39 @@ footer {
 
 @media screen and (max-width: 1050px) {
 
- .nav-btns {
-  font-size: 1em;
- }
-
- #main {
-  grid-template-columns: repeat(2, 1fr);
+.nav-btns {
+  font-size: 1.1em;
 }
 
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 850px) {
 
- .nav-btns {
-  font-size: .7em;
- }
+.nav-btns {
+  font-size: .8em;
+}
+
+form {
+  width: 60%;
+}
 
 #main {
   grid-template-columns: repeat(2, 1fr);
 }
 
+}
+
+@media screen and (max-width: 600px) {
+
+form {
+  width: 80%;
+}  
+
+#main {
+  grid-template-columns: 1fr;
+}
+
+}
 
 @media screen and (max-width: 420px) {
 
