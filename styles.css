@@ -318,12 +318,8 @@ footer {
 
 @media screen and (max-width: 520px) {
   body {
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    display: grid;
-    grid-template-rows: 11.8% ;
-    grid-template-columns: 100%;
+    grid-template-rows: 13% ;
+    grid-template-columns: 1fr;
     grid-template-areas: 
       "nav"
       "section"
