@@ -364,6 +364,10 @@ body {
     display: inline;
   }
 
+  .unHide {
+    display: block;
+  }
+
   h1 {
     border-bottom: none;
     text-align: center;

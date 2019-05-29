@@ -18,6 +18,10 @@ var qualities = ['Swill', 'Plausible', 'Genius'];
 
 var card = document.querySelector('article');
 
+var burger = document.getElementById('hamburger');
+
+var mobileNav = document.querySelector('.mobileNav')
+
 titleInput.addEventListener('keyup', enableSaveBtn);
 
 bodyInput.addEventListener('keyup', enableSaveBtn);
@@ -29,6 +33,8 @@ mainContent.addEventListener('click', clickHandler);
 mainContent.addEventListener('focusout', updateContent);
 
 mainContent.addEventListener('keydown', enterUpdateContent);
+
+burger.addEventListener('click', toggleMobileNav)
 
 window.addEventListener('load', mapLocalStorage(ideas));
 
@@ -183,4 +189,8 @@ function downvoteBtn(event) {
   ideas[cardIndex].updateQuality('down');
   document.querySelector(`.card[data-id="${cardId}"] span`).innerText = qualities[ideas[cardIndex].quality];
   }
+}
+
+function toggleMobileNav() {
+  mobileNav.classList.add('unHide');
 }
