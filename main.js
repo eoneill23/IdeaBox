@@ -32,7 +32,7 @@ mainContent.addEventListener('keydown', enterUpdateContent);
 
 window.addEventListener('load', mapLocalStorage(ideas));
 
-mainContent.addEventListener('mouseover', hoverHandler);
+// mainContent.addEventListener('mouseover', hoverHandler);
 
 function enableSaveBtn() {
   saveBtn.disabled = false;
@@ -87,7 +87,7 @@ function appendCard(idea) {
   mainContent.insertAdjacentHTML('afterbegin', `<article class="card" data-id="${idea.id}">
       <header>
         <img src="images/${starStatus}" alt="Star rating" id="white-star-img">
-        <img src="images/delete.svg" alt="Delete x" id="white-x-img">
+        <svg alt="Delete x" id="white-x-img"></svg>
       </header>
       <main id="card-body">
         <h3 id="idea-title-output" contenteditable="true">${idea.title}</h3>
@@ -96,9 +96,9 @@ function appendCard(idea) {
         </p>
       </main>
       <footer>
-        <img src="images/upvote.svg" alt="Quality upvote button" id="white-upvote-img">
-        <p >Quality: <span>${qualities[idea.quality]}</span></p>
-        <img src="images/downvote.svg" alt="Quality downvote button" id="white-downvote-img">
+        <svg alt="Quality upvote button" id="white-upvote-img"></svg>
+        <p>Quality: <span>${qualities[idea.quality]}</span></p>
+        <svg alt="Quality downvote button" id="white-downvote-img"></svg>
       </footer>
     </article>`)
 }
@@ -187,31 +187,31 @@ function downvoteBtn(event) {
   }
 }
 
-function hoverHandler(event) {
-  hoverUpvoteStates(event);
-  hoverDownvoteStates(event);
-  hoverDeleteStates(event);
-}
+// function hoverHandler(event) {
+//   hoverUpvoteStates(event);
+//   hoverDownvoteStates(event);
+//   hoverDeleteStates(event);
+// }
 
-// function hoverDeleteStates(event);
+// // function hoverDeleteStates(event);
 
 
-function hoverUpvoteStates(event) {
-  if (event.target.closest('#white-upvote-img')) {
-  var cardId = getUniqueId(event);
-  var cardIndex = getCardIndex(cardId);
-  var dynamicUpvote = 'images/upvote-active.svg'
-  var staticUpvote = document.querySelector(`.card[data-id="${cardId}"] #white-upvote-img`);
-  staticUpvote.src = dynamicUpvote
-} 
-}
+// function hoverUpvoteStates(event) {
+//   if (event.target.closest('#white-upvote-img')) {
+//   var cardId = getUniqueId(event);
+//   var cardIndex = getCardIndex(cardId);
+//   var dynamicUpvote = 'images/upvote-active.svg'
+//   var staticUpvote = document.querySelector(`.card[data-id="${cardId}"] #white-upvote-img`);
+//   staticUpvote.src = dynamicUpvote
+// } 
+// }
 
-function hoverDownvoteStates(event) {
-  if (event.target.closest('#white-downvote-img')) {
-  var cardId = getUniqueId(event);
-  var cardIndex = getCardIndex(cardId);
-  var dynamicDownvote = 'images/downvote-active.svg'
-  var staticDownvote = document.querySelector(`.card[data-id="${cardId}"] #white-downvote-img`);
-  staticDownvote.src = dynamicDownvote
-} 
-}
+// function hoverDownvoteStates(event) {
+//   if (event.target.closest('#white-downvote-img')) {
+//   var cardId = getUniqueId(event);
+//   var cardIndex = getCardIndex(cardId);
+//   var dynamicDownvote = 'images/downvote-active.svg'
+//   var staticDownvote = document.querySelector(`.card[data-id="${cardId}"] #white-downvote-img`);
+//   staticDownvote.src = dynamicDownvote
+// } 
+// }
