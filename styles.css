@@ -178,7 +178,7 @@ div {
   border-radius: 3px;
 }
 
-/*-------------------Main------------------*/
+/*------------------------Main-----------------------*/
 
 #main {
   padding: 20px;
@@ -253,6 +253,37 @@ footer {
   align-items: center;
   justify-content: space-between;
 }
+
+#white-x-img {
+  background: url(images/delete.svg) no-repeat;
+  height: 40px;
+  width: 40px;
+}
+
+#white-x-img:hover {
+  background: url(images/delete-active.svg) no-repeat;
+}
+
+#white-upvote-img {
+  background: url(images/upvote.svg) no-repeat;
+  height: 40px;
+  width: 40px;
+}
+
+#white-upvote-img:hover {
+  background: url(images/upvote-active.svg) no-repeat;
+}
+
+#white-downvote-img {
+  background: url(images/downvote.svg) no-repeat;
+  height: 40px;
+  width: 40px;
+}
+
+#white-downvote-img:hover {
+  background: url(images/downvote-active.svg) no-repeat;
+}
+
 
 /*-------------------Media Queries------------------*/
 
