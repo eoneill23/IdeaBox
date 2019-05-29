@@ -323,45 +323,6 @@ form {
 
 }
 
-/*
-body {
-  display: block;
-}
-
-nav {
-  text-align: center;
-}
-
-h1 {
-  font-size: 2em;
-  margin-top: 0;
-  padding: 20px 0;
-}
-
-h2 {
-  font-size: 1em;
-}
-
-.nav-btns {
-  width: 50%;
-  font-size: 1.3em;
-}
-
-#new-quality-label {
-  font-size: 1em;
-}
-
-#new-quality-input {
-  width: 50%;
-}
-
-#main {
-  grid-template-columns: repeat(2, 1fr);
-}
-  
-}*/
-
-
 @media screen and (max-width: 420px) {
 
 }
