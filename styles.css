@@ -16,9 +16,14 @@ body {
     "nav main main main";
 }
 
-img {
-  height: 30px;
+#white-star-img{
+  height: 40px;
+  width: 40px;
 }
+
+/*img {
+  height: 30px;
+}*/
 
 #hamburger {
   display: none;
