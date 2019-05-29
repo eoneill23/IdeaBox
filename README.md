@@ -20,10 +20,10 @@ We are happy with the workflow, teamwork and project outcome. We all worked coll
 
 ##Screenshots
 ###Full Screen
-![](image/Desktop.png)
+![](images/Desktop.png)
 
 ###Mobile Layout
-![](image/Mobile.png)
-![](image/Mobile-withDropDown.png)
+![](images/Mobile.png)
+![](images/Mobile-withDropDown.png)
 
 
