@@ -190,7 +190,8 @@ div {
 }
 
 .card {
-  width: 100%;
+  min-width: 200px;
+  /*width: 100%;*/
   border: 1px solid #6E646B;
 }
 
@@ -207,14 +208,16 @@ div {
 }
 
 #card-body {
-  height: 250px;
+  /*height: 250px;*/
+  height: 74%;
   color: #1F1F3D;
   padding: 20px 15px 20px 15px;
   background-color: #FFFFFF;
 }
 
 header {
-  height: 35px;
+  /*height: 35px;*/
+  height: 13%;
   background-color: #1F1F3D;
   display: flex;
   align-items: center;
@@ -242,7 +245,8 @@ header {
 }
 
 footer {
-  height: 35px;
+  /*height: 35px;*/
+  height: 13%;
   color: #FFFFFF;
   background-color: #5356A4;
   display: flex;
@@ -278,6 +282,17 @@ form {
 
 @media screen and (max-width: 600px) {
 
+form {
+  width: 80%;
+}  
+
+#main {
+  grid-template-columns: 1fr;
+}
+
+}
+
+/*
 body {
   display: block;
 }
@@ -313,7 +328,7 @@ h2 {
   grid-template-columns: repeat(2, 1fr);
 }
   
-}
+}*/
 
 
 @media screen and (max-width: 420px) {
