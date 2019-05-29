@@ -51,7 +51,6 @@ function disableSaveBtn() {
 
 
 function mapLocalStorage(oldIdeas) {
-  console.log('load')
   var newIdeas = oldIdeas.map(function(object) {
     return turnObjectIntoIdeas(object);
   })
@@ -84,6 +83,12 @@ function handleSaveButton() {
   clearFields();
   disableSaveBtn();
 };
+
+function reappearPrompt() {
+  if (ideas.length === 0) {
+    userPrompt.classList.remove('hidden');
+  }
+}
 
 function appendCard(idea) {
   userPrompt.classList.add('hidden');
@@ -125,6 +130,7 @@ function deleteCard(event) {
   var cardIndex = getCardIndex(cardId)
   event.target.closest('.card').remove();
   ideas[cardIndex].deleteFromStorage(cardIndex);
+  reappearPrompt();
   }
 }
 
