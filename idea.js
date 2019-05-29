@@ -8,12 +8,12 @@ class Idea {
   }
 
   saveToStorage(ideas) {
-    var allIdeas = JSON.stringify(ideas)
+    var allIdeas = JSON.stringify(ideas);
     localStorage.setItem('ideasArray', allIdeas);
   }
 
   deleteFromStorage(index) {
-    ideas.splice(index, 1)
+    ideas.splice(index, 1);
     this.saveToStorage(ideas);
   }
 
@@ -24,7 +24,7 @@ class Idea {
   }
 
   updateStar() {
-    this.star = !this.star
+    this.star = !this.star;
     this.saveToStorage(ideas);
     return this.star;
   }
@@ -32,9 +32,9 @@ class Idea {
   updateQuality(direction) {
     if (this.quality < (qualities.length -1) && direction == 'up') {
     this.quality ++;
-  }  else if (this.quality > 0 && direction == 'down') {
+    } else if (this.quality > 0 && direction == 'down') {
     this.quality --;
     }
-  this.saveToStorage(ideas);
+    this.saveToStorage(ideas);
   }
 }

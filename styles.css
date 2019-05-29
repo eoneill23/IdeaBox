@@ -6,8 +6,8 @@
 /*------------------Body------------------*/
 
 body {
-  width: 100%;
   height: 100vh;
+  width: 100%;
   margin: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -16,21 +16,25 @@ body {
     "nav main main main";
 }
 
-img {
-  height: 30px;
+#white-star-img {
+  height: 40px;
+  width: 40px;
+}
+
+/*-------------------Nav-------------------*/
+
+nav {
+  color: #FFFFFF;
+  background-color: #1F1F3D;
+  grid-area: nav;
 }
 
 #hamburger {
   display: none;
 }
 
-/*-------------------Nav-------------------*/
-
-nav {
-  /*height: 100%;*/
-  color: #FFFFFF;
-  background-color: #1F1F3D;
-  grid-area: nav;
+img {
+  height: 30px;
 }
 
 section { 
@@ -97,12 +101,11 @@ li {
   grid-area: section;
 }
 
-.idea-form-label{
+.idea-form-label {
   color: #353567;
   font-size: .8em;
   font-weight: 700;
   margin-bottom: 5px;
-  display: block;
 }
 
 form {
@@ -114,18 +117,17 @@ form {
 }
 
 #idea-title-input {
-  font-size: 1em;
+  height: 40px;
   color: #353567;
+  font-size: 1em;
   margin-bottom: 15px;
   border: 1px solid #5356A4;
-  height: 40px;
 }
 
 #idea-body-input {
   height: 80px;
   color: #353567;
   font-size: 1em;
-  margin-bottom: 20px
   border: 1px solid #5356A4;
 }
 
@@ -191,11 +193,11 @@ form {
 
 .card {
   min-width: 200px;
-  /*width: 100%;*/
   border: 1px solid #6E646B;
 }
 
 #user-prompt-text {
+  min-height: 328px;
   color: #aaaaaa;
   text-align: center;
   margin: auto;
@@ -208,7 +210,6 @@ form {
 }
 
 #card-body {
-  /*height: 250px;*/
   height: 74%;
   color: #1F1F3D;
   padding: 20px 15px 20px 15px;
@@ -216,7 +217,6 @@ form {
 }
 
 header {
-  /*height: 35px;*/
   height: 13%;
   background-color: #1F1F3D;
   display: flex;
@@ -226,10 +226,8 @@ header {
 
 #idea-title-output {
   height: 50px;
-  /*max-height: 50px;*/
   max-width: 24ch;
   width: 100%;
-  /*width: 200px;*/
   font-size: 1em;
   margin: 0;
   overflow: scroll;
@@ -237,7 +235,6 @@ header {
 
 #idea-body-output {
   height: 150px;
-  /*max-height: 150px;*/
   max-width: 24ch;
   font-size: 1em;
   margin: 0;
@@ -245,7 +242,6 @@ header {
 }
 
 footer {
-  /*height: 35px;*/
   height: 13%;
   color: #FFFFFF;
   background-color: #5356A4;
@@ -255,9 +251,9 @@ footer {
 }
 
 #white-x-img {
-  background: url(images/delete.svg) no-repeat;
   height: 40px;
   width: 40px;
+  background: url(images/delete.svg) no-repeat;
 }
 
 #white-x-img:hover {
@@ -265,9 +261,9 @@ footer {
 }
 
 #white-upvote-img {
-  background: url(images/upvote.svg) no-repeat;
   height: 40px;
   width: 40px;
+  background: url(images/upvote.svg) no-repeat;
 }
 
 #white-upvote-img:hover {
@@ -275,67 +271,59 @@ footer {
 }
 
 #white-downvote-img {
-  background: url(images/downvote.svg) no-repeat;
   height: 40px;
   width: 40px;
+  background: url(images/downvote.svg) no-repeat;
 }
 
 #white-downvote-img:hover {
   background: url(images/downvote-active.svg) no-repeat;
 }
 
-
 /*-------------------Media Queries------------------*/
 
-@media screen and (max-width: 1050px) {
-
-.nav-btns {
-  font-size: 1.1em;
+@media screen and (max-width: 1150px) {
+  .nav-btns {
+    font-size: 1.1em;
+  }
 }
 
+@media screen and (max-width: 950px) {
+  .nav-btns {
+    font-size: .8em;
+  }
+
+  form {
+    width: 60%;
+  }
+
+  #main {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 700px) {
+  form {
+    width: 80%;
+  }  
 
-.nav-btns {
-  font-size: .8em;
+  #idea-body-output {
+    max-width: 45ch; 
+  }
+
+  #main {
+    grid-template-columns: 1fr;
+  }
 }
 
-form {
-  width: 60%;
-}
-
-#main {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-}
-
-@media screen and (max-width: 600px) {
-
-form {
-  width: 80%;
-}  
-
-#main {
-  grid-template-columns: 1fr;
-}
-
-}
-
-@media screen and (max-width: 420px) {
-
-body {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  display: grid;
-  grid-template-rows:10% ;
-  grid-template-columns: 100%;
-  grid-template-areas: 
-    "nav"
-    "section"
-    "main";
+@media screen and (max-width: 520px) {
+  body {
+    grid-template-rows: 13% ;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "nav"
+      "section"
+      "main";
   }
 
   #main {
@@ -346,18 +334,22 @@ body {
     position: relative;
   }
 
+  .nav-btns {
+    font-size: 1.5em;
+  }
+
   .mobileNav {
+    width: 100%;
+    background-color: #1F1F3D;
     display: none;
     position: absolute;
-    background-color: #1F1F3D;
-    width: 100%;
   }
 
   .mobileNavMenu {
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
   }
 
   #hamburger {
@@ -373,25 +365,12 @@ body {
   }
 
   h1 {
-    border-bottom: none;
     text-align: center;
     padding: 0;
+    border-bottom: none;
   }
 
   form {
     width: 90%;
   }
 }
-
-}
-
-
-
-
-
-
-
-
-
-
-
