@@ -18,11 +18,11 @@ Once our HTML and styling was satisfactory we began pseudocoding our functionali
 We are happy with the workflow, teamwork and project outcome. We all worked collaboratively on each aspect of the project, and were able to grow, ask questions, and increase our understanding. 
 
 
-##Screenshots
-###Full Screen
+## Screenshots
+### Full Screen
 ![](images/Desktop.png)
 
-###Mobile Layout
+### Mobile Layout
 ![](images/Mobile.png)
 ![](images/Mobile-withDropDown.png)
 
